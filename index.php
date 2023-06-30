@@ -24,7 +24,7 @@
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At quis velit eligendi aut dicta perferendis ducimus, obcaecati maiores hic ut veritatis fugit excepturi cum quisquam blanditiis accusamus impedit iure natus?</p>
     <form action="" method="post">
         <label for="username">username</label>
-        <input type="text" name="username" id="username">
+        <input type="text" name="username" id="username" required>
         <button name="sapmit">Submit</button>
     </form>
 </body>
