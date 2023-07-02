@@ -1,0 +1,27 @@
+.container{
+    width: 600px;
+    height: 150px;
+    border: 5px solid #333;
+    margin: 30px auto;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    /* flex-direction: column-reverse; */
+    /* flex-wrap: wrap; */
+    /* align-content: center; */
+    /* justify-content: space-evenly; */
+    /* align-items: stretch; */
+    gap: 5px;
+}
+
+.container div{
+    width: 120px;
+    /* height: 120px; */
+    background-color: cyan;
+    flex: 1;
+}
+
+.container .dua{
+    flex: 2;
+    align-self: center;
+}
