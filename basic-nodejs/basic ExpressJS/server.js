@@ -5,7 +5,7 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) =>{
-    res.render('login')
+    res.render('index')
 })
 
 const userRouter = require('./routes/users')
