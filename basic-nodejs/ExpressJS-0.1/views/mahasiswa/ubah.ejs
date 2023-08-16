@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubah Mahasiswa</title>
+</head>
+<body>
+  <h1>Ubah Mahasiswa</h1>
+
+    <%= locals.errors %>
+
+  <form action="/mahasiswa/ubah/<%= datas[0].nim %>" method="POST">
+    <label for="nim">Nim :</label>
+    <input type="text" name="nim" id="nim" value="<%= datas[0].nim %>"> <br>
+    <label for="nama">Nama :</label>
+    <input type="text" name="nama" id="nama" value="<%= datas[0].nama %>"> <br>
+    <label for="stambuk">Stambuk :</label>
+    <input type="number" name="stambuk" id="stambuk" value="<%= datas[0].stambuk %>"> <br>
+    <button>Submit</button>
+  </form>
+  
+</body>
+</html>

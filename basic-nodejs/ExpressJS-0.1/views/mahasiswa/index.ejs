@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+</head>
+<body>
+  <h1>Selamat Datang</h1>
+  <a href="/mahasiswa/tambah">tambah</a>
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nim</th>
+        <th>Nama</th>
+        <th>Stambuk</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%  var no = 0 %>
+        <% datas.forEach((data)=>{ %>
+          <% no++ %>
+          <tr>
+            <td><%= no %></td>
+            <td><%= data.nim %></td>
+            <td><%= data.nama %></td>
+            <td><%= data.stambuk %></td>
+            <td>
+              <a href="/mahasiswa/ubah/<%= data.nim %>">Ubah</a> | 
+              <a href="/mahasiswa/hapus/<%= data.nim %>">Hapus</a>
+            </td>
+          </tr>
+        <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
