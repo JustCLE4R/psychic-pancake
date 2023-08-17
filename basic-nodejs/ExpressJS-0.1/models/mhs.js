@@ -46,22 +46,18 @@ var mhsModel = {
         
         return result(res)
       })
+  },
+
+  destroy: (nim, result) => {
+    con.query(
+      `DELETE FROM mahasiswa WHERE nim = ?`, nim, (err, res) => {
+        if(err)
+          return result(err)
+        
+        return result(res)
+      }
+    )
   }
-
-  // update: (data, id, callback) => {
-  //   con.query(
-  //     `UPDATE mahasiswa SET
-  //   nim = '${data.nim}',
-  //   nama = '${data.nama}',
-  //   stambuk = '${data.stambuk}'
-  //   WHERE id = ${id}`,
-  //     callback
-  //   );
-  // },
-
-  // destroy: (id, callback) => {
-  //   con.query(`DELETE FROM mahasiswa WHERE id = ${id}`, callback);
-  // },
 };
 
 module.exports = mhsModel;

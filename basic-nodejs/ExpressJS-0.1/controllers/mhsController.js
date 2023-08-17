@@ -21,7 +21,6 @@ const mhsController = {
   save: (req, res, next) => {
     try {
       const errors = validationResult(req)
-      // const err = new Error(JSON.stringify(errors.array()))
       const err = errors.array()
       let err_msg=[];
 
@@ -29,11 +28,7 @@ const mhsController = {
         err.forEach((err_satuan)=>{
           err_msg += err_satuan['msg'] + "<br/>"
         })
-        console.log(err_msg)
-        return res.status(400).render('mahasiswa/tambah', {
-          success: false,
-          errors: err_msg
-        })
+        return [req.flash('error', err_msg), res.redirect('/mahasiswa/tambah')]
       }
 
       var mhsBaru = {
@@ -91,45 +86,31 @@ const mhsController = {
 
       mhs.update(nim, mhsUpdate, (result) => {
         if (result.affectedRows==1) {
-          
-          req.flash("success", "Mahasiswa added succesfully")
+          req.flash("success", "Mahasiswa Update succesfully")
           res.redirect('/mahasiswa')
         } else {
           req.flash("error", "There was error in inserting data")
           res.redirect('/mahasiswa/ubah/'+nim)
         }
-        
       })
-
     }
     catch (err) {
       next(err)
     }
+  },
+
+  destroy: (req, res) => {
+    var nim = req.params.nim;
+    mhs.destroy(nim, (result) => {
+      if (result.affectedRows == 1) {
+        req.flash("success", "Mahasiswa ter delete");
+        res.redirect("/mahasiswa");
+      } else {
+        req.flash("error", "Mahasiswa gagal ter delete");
+        res.redirect("/mahasiswa");
+      }
+    });
   }
-
-  // store: (req, res) => {
-  //   mhs.create(req.con, req.body, (err) => {
-  //     res.redirect('/mahasiswa')
-  //   })
-  // },
-
-  // edit: (req, res) => {
-  //   mhs.getById(req.con, req.params.id, (err, rows) => {
-  //     res.render('mahasiswa/edit', {data: rows[0]})
-  //   })
-  // },
-
-  // update: (req, res) => {
-  //   mhs.update(req.con, req.body, req.params.id, (err) => {
-  //     res.redirect('mahasiswa')
-  //   })
-  // },
-
-  // destroy: (req, res) => {
-  //   mhs.destroy(req.con, req.params.id, (err) => {
-  //     res.redirect('/mahasiswa')
-  //   })
-  // }
 }
 
 module.exports = mhsController

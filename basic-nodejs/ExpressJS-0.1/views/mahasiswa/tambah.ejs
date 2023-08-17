@@ -4,17 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tambah Mahasiswa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
   <h1>Tambah Mahasiswa</h1>
 
-    <%- locals.errors %> <br>
+  <% if (messages.error) { %>
+    <div class="alert alert-danger alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Error!</strong>
+      <br>
+      <%- messages.error %>
+    </div>
+  <% } %>
+  <% if (messages.success) { %>
+        <div class="alert alert-success alert-dismissible ">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong> <br> <%- messages.success %>
+        </div>
+  <% } %>
+
+    <% 
+      function makeid(length) {
+        let result = '';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        let counter = 0;
+        while (counter < length) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+          counter += 1;
+      }
+      return result;
+      }
+    %>
 
   <form action="" method="POST">
     <label for="nim">Nim :</label>
-    <input type="text" name="nim" id="nim" value="070121212"> <br>
+    <input type="text" name="nim" id="nim" value="<%= Math.floor(1000000000 + Math.random() * 9000000000);  %>"> <br>
     <label for="nama">Nama :</label>
-    <input type="text" name="nama" id="nama" value="test add"> <br>
+    <input type="text" name="nama" id="nama" value="<%= makeid(15) %>"> <br>
     <label for="stambuk">Stambuk :</label>
     <input type="number" name="stambuk" id="stambuk" value="2020"> <br>
     <button>Submit</button>

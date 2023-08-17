@@ -3,28 +3,27 @@ const router = express.Router()
 const mhsController = require('../controllers/mhsController')
 const mhsValidate = require('../validations/mhsValidation')
 
-router 
-  .route('/')
-  .get(mhsController.index)
-//   .post(mhsController.store)
+router.route("/").get(mhsController.index);
 
 router
-  .route('/tambah')
+  .route("/tambah")
   .get(mhsController.add)
-  .post(mhsValidate, mhsController.save)
+  .post(mhsValidate, mhsController.save);
 
 router
-  .route('/ubah/:nim')
+  .route("/ubah/:nim")
   .get(mhsController.edit)
-  .post(mhsValidate, mhsController.update)
+  .post(mhsValidate, mhsController.update);
+// .delete(mhsController.destroy)
 
-// router
-//   .route('/:nim')
-//   .put(mhsController.update)
-//   .delete(mhsController.destroy)
+router.use((req, res, next) => {
+  if (req.query._method == "DELETE") {
+    req.method = "DELETE";
+    req.url = req.path;
+  }
+  next();
+});
 
-// router
-//   .route('/:nim/edit')
-//   .get(mhsController.edit)
+router.delete("/:nim", mhsController.destroy);
 
 module.exports = router
