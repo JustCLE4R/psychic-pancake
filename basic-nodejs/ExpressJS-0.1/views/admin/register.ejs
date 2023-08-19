@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/register.css">
+  <title>Register Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="bgimg"></div>
+  <% if (messages.error) { %>
+    <div class="alert alert-danger alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Error!</strong>
+      <br>
+      <%- messages.error %>
+    </div>
+    <% } %>
+      <% if (messages.success) { %>
+        <div class="alert alert-success alert-dismissible ">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong> <br> <%- messages.success %>
+        </div>
+        <% } %>
+          <div class="container">
+            <div class="clogin">
+              <p class="headclog">Selamat Datang</p>
+              <form action="" method="post">
+                <div class="fusername">
+                  <label for="nama">
+                    <p>Nama</p>
+                  </label>
+                  <input type="text" name="nama" id="nama" placeholder="nama" autocomplete="off" <% if(locals.datas){%>
+                  value="<%= datas.nama %>" <% } %>>
+                </div>
+                <div class="fpassword">
+                  <label for="nim">
+                    <p>Nim</p>
+                  </label>
+                  <input type="text" name="nim" id="nim" placeholder="nim" autocomplete="off" <% if(locals.datas){%>
+                  value="<%= datas.nim %>" <% } %>>
+                </div>
+                <div class="fpassword">
+                  <label for="username">
+                    <p>Username</p>
+                  </label>
+                  <input type="text" name="username" id="username" placeholder="username" autocomplete="off" <%
+                    if(locals.datas){%>
+                  value="<%= datas.username %>" <% } %>>
+                </div>
+                <div class="fpassword">
+                  <label for="password">
+                    <p>Password</p>
+                  </label>
+                  <input type="password" name="password" id="password" placeholder="••••••••">
+                </div>
+                <div class="fpassword">
+                  <label for="password2">
+                    <p>Confirm Password</p>
+                  </label>
+                  <input type="password" name="password2" id="password2" placeholder="••••••••">
+                </div>
+                <button type="submit" class="tmbllogin">Register!</button>
+              </form>
+              <div class="esensial">
+                <a href="#">Forget Password?</a> | <a href="login">Login!</a>
+              </div>
+            </div>
+          </div>
+</body>
+
+</html>
