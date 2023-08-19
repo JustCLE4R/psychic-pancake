@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true })); //biar bisa akses informasi dar
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(flash());
 app.use(
   session({
     resave: true,
@@ -22,14 +23,15 @@ app.use(
     cookie: { secure: false, maxAge: 14400000 },
   })
 );
-app.use(flash());
 app.use(methodOverride("_method"));
 
 //include router
 const mhsRouter = require("./routes/mhsRouter");
+const adminRouter = require("./routes/adminRouter");
 
 //routing
 app.use("/mahasiswa", mhsRouter);
+app.use("/admin", adminRouter);
 
 //root route
 app.get("/", (req, res) => {

@@ -14,7 +14,6 @@ router
   .route("/ubah/:nim")
   .get(mhsController.edit)
   .post(mhsValidate, mhsController.update);
-// .delete(mhsController.destroy)
 
 router.use((req, res, next) => {
   if (req.query._method == "DELETE") {
