@@ -1,18 +1,19 @@
 const express = require('express')
 const router = express.Router()
+const passport = require('passport');
 const mhsController = require('../controllers/mhsController')
 const mhsValidate = require('../validations/mhsValidation')
 
-router.route("/").get(mhsController.index);
+router.route("/").get(passport.checkAuthentication ,mhsController.index);
 
 router
   .route("/tambah")
-  .get(mhsController.add)
-  .post(mhsValidate, mhsController.save);
+  .get(passport.checkAuthentication, mhsController.add)
+  .post(passport.checkAuthentication, mhsValidate, mhsController.save);
 
 router
   .route("/ubah/:nim")
-  .get(mhsController.edit)
+  .get(passport.checkAuthentication, mhsController.edit)
   .post(mhsValidate, mhsController.update);
 
 router.use((req, res, next) => {
@@ -23,6 +24,6 @@ router.use((req, res, next) => {
   next();
 });
 
-router.delete("/:nim", mhsController.destroy);
+router.delete("/:nim", passport.checkAuthentication, mhsController.destroy);
 
 module.exports = router

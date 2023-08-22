@@ -12,48 +12,44 @@ var mhsModel = {
   },
 
   create: (mhsBaru, result) => {
-    con.query(
-      `INSERT INTO mahasiswa SET ?`, mhsBaru, (err, res) => {
+    con.query(`INSERT INTO mahasiswa SET ?`, mhsBaru, (err, rows) => {
         if (err) {
           return result(err, null)
         } else {
-          return result(null, res)
+          return result(null, rows)
         }
       })
   },
 
   getByNIM: (nim, result) => {
-    con.query(
-      `SELECT * FROM mahasiswa WHERE nim = ?`, nim, (err, res) => {
+    con.query(`SELECT * FROM mahasiswa WHERE nim = ?`, nim, (err, rows) => {
         if(err)
           return result(err)
         
-        if(res.length <= 0){
+        if(rows.length <= 0){
           return result(err)
         }
         else{
-          return result(res)
+          return result(rows)
         }
       })
   },
 
   update: (nim, mhsUpdate, result) => {
-    con.query(
-      `UPDATE mahasiswa SET ? WHERE nim = ?`, [mhsUpdate, nim], (err, res) => {
+    con.query(`UPDATE mahasiswa SET ? WHERE nim = ?`, [mhsUpdate, nim], (err, rows) => {
         if(err)
           return result(err)
         
-        return result(res)
+        return result(rows)
       })
   },
 
   destroy: (nim, result) => {
-    con.query(
-      `DELETE FROM mahasiswa WHERE nim = ?`, nim, (err, res) => {
+    con.query(`DELETE FROM mahasiswa WHERE nim = ?`, nim, (err, rows) => {
         if(err)
           return result(err)
         
-        return result(res)
+        return result(rows)
       })
   }
 };
