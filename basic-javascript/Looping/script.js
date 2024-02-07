@@ -1,11 +1,14 @@
-// var nilai = 0;
+var bKeys = [];
 
-// while(nilai <= 10){
-//     console.log('Hello World! ' + nilai + ' kali');
-//     nilai ++;
-// }
+$('body').keydown(function(e) {
+  if (bKeys.includes(e.which) === false) {
+    bKeys.push(e.which);
+  }
+});
 
-// for(var i = 1; i<=10; i++){
-//     console.log(i);
-// }
-
+$('body').keyup(function(e) {
+  bKeys.pop(e.which);
+});
+setInterval(() => {
+  console.log(bKeys);
+}, 15);
