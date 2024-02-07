@@ -31,7 +31,7 @@ Route::get('/about', function () {
     'title' => 'About',
     'nama' => 'Dimas Yudistira',
     'alamat' => 'Sambirejo',
-    'gambar' => 'dimas.jpg',
+    'gambar' => 'placeholder.png',
   ]);
 });
 
