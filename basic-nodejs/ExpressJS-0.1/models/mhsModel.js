@@ -2,7 +2,7 @@ const con = require("../config/db");
 
 var mhsModel = {
   get: (result) => {
-    con.query("SELECT * FROM mahasiswa", (err, rows, fiels) => {
+    con.query("SELECT * FROM mahasiswa", (err, rows) => {
       if (err) {
         return result(err, null)
       } else {

@@ -46,6 +46,6 @@ app.get("/", passport.checkAuthentication, (req, res) => {
   res.render("index", {nama: req.user.nama});
 });
 
-app.listen(3000, () => {
-  console.log('server up and running on port 3000')
+app.listen(3010, () => {
+  console.log('server up and running on port 3010')
 })

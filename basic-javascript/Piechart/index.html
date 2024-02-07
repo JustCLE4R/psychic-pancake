@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piechart</title>
+  <style>
+    .center {
+      height: 97vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center">
+    <pie-chart stroke-width="200" pulltext="10" offset="100">
+      <style>
+        text {
+          font-size: 8rem;
+          text-anchor: middle;
+        }
+        *{
+          border: 1px red solid;
+        }
+      </style>
+        
+      <slice size="12" stroke="green">1</slice>
+      <slice size="1" stroke=""> </slice>
+      <slice size="12" stroke="orange">2</slice>
+      <slice size="1" stroke=""> </slice>
+      <slice size="12" stroke="lightgrey">3</slice>
+      <slice size="1" stroke=""> </slice>
+      <slice size="12" stroke="lightgrey">4</slice>
+      <slice size="1" stroke=""> </slice>
+      <slice size="12" stroke="lightgrey">5</slice>
+      <slice size="1" stroke=""> </slice>
+      <slice size="12" stroke="lightgrey">6</slice>
+      <slice size="1" stroke=""> </slice>
+      <slice size="12" stroke="lightgrey">7</slice>
+      <slice size="1" stroke=""> </slice>
+      <slice size="12" stroke="lightgrey">8</slice>
+      <slice size="1" stroke=""> </slice>
+      <slice>Edit</slice>
+    </pie-chart>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
