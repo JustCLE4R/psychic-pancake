@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InfoController;
+use App\Http\Controllers\categoryController;
 use App\Http\Controllers\postController;
-use App\Models\postModel;
+use App\Http\Controllers\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +19,8 @@ use App\Models\postModel;
 Route::get('/', function () {
   return view('landing');
 });
+
+Route::get('/user/{id}', [userController::class, 'getUserById']);
 
 Route::get('/home', function () {
   return view('home', [
@@ -36,7 +38,6 @@ Route::get('/about', function () {
 });
 
 Route::get('/posts', [postController::class, 'index']);
-
 Route::get('/posts/{post:slug}', [postController::class, 'show']); //kalo ditambah ":" setelah wildcard dia akan mengirimkan sesuai dengan apa yang kita ketik (default jika tidak di ketik adalah ID)
 
-Route::get('/info', [InfoController::class, 'showInfo']);
+Route::get('/categories/{category:slug}', [categoryController::class, 'index']);
