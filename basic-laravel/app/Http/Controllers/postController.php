@@ -6,7 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class postController extends Controller
+class PostController extends Controller
 {
   public function index(){
     return view('posts', [

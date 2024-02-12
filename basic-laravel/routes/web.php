@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\categoryController;
-use App\Http\Controllers\postController;
-use App\Http\Controllers\userController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ Route::get('/', function () {
   return view('landing');
 });
 
-Route::get('/user/{id}', [userController::class, 'getUserById']);
+Route::get('/user/{id}', [UserController::class, 'getUserById']);
 
 Route::get('/home', function () {
   return view('home', [
@@ -37,7 +37,10 @@ Route::get('/about', function () {
   ]);
 });
 
-Route::get('/posts', [postController::class, 'index']);
-Route::get('/posts/{post:slug}', [postController::class, 'show']); //kalo ditambah ":" setelah wildcard dia akan mengirimkan sesuai dengan apa yang kita ketik (default jika tidak di ketik adalah ID)
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/{post:slug}', [PostController::class, 'show']); //kalo ditambah ":" setelah wildcard dia akan mengirimkan sesuai dengan apa yang kita ketik (default jika tidak di ketik adalah ID)
 
-Route::get('/categories/{category:slug}', [categoryController::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{category:slug}', [CategoryController::class, 'cat']);
+
+Route::get('/authors/{author:username}', [UserController::class, 'user']);

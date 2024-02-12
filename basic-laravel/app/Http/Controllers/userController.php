@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
-class userController extends Controller
+class UserController extends Controller
 {
-  public function getUserById(Request $request, $id)
-  {
-    return view('user', ['request' => $request, 'id' => $id]);
+  public function user(User $author){
+    return view('posts', [
+      'flag' => 'author',
+      'title' => $author->name,
+      'posts' => $author->post,
+    ]);
   }
 }
