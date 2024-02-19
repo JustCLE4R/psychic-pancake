@@ -17,7 +17,9 @@ class Post extends Model
     //     'slug'
     // ];
 
-    protected $guarded = ['id'];
+    protected $guarded = [
+        'id'
+    ];
 
     public function category(){
         return $this->belongsTo(Category::class);

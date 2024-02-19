@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-  <h1 class="mb-5">{{ $flag ?? '' == 'author' ? $title . "'s Posts" : 'Posts Blog' }}</h1>
+  <h1 class="mb-5">{{ $title }}</h1>
 
   @foreach ($posts as $post)
     <article class="mb-4 border-bottom pb-3">

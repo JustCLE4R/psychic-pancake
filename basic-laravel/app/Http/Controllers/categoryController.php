@@ -8,10 +8,9 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
   public function cat(Category $category){
-    return view('category', [
-      'title' => $category->name,
-      'posts' => $category->post,
-      'category' => $category->name
+    return view('posts', [
+      'title' => "Post by Category : $category->name",
+      'posts' => $category->post->load('category', 'author'), //agar tidak terjadi N+1 Problem untuk route model binding, tambah load()
     ]);
   }
 

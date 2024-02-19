@@ -44,3 +44,4 @@ Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/{category:slug}', [CategoryController::class, 'cat']);
 
 Route::get('/authors/{author:username}', [UserController::class, 'user']);
+Route::get('/authors', [UserController::class, 'users']);
