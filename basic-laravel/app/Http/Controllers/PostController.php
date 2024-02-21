@@ -3,15 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class PostController extends Controller
 {
   public function index(){
+
+    $title = '';
+
+    if(request('category')){
+      $category = Category::firstWhere('slug', request('category'));
+      $title = ' in ' . $category->name;
+    }
+
+    if(request('author')){
+      $author = User::firstWhere('username', request('author'));
+      $title = ' by ' . $author->name;
+    }
+
     return view('posts', [
-      'title' => 'All Posts',
-      'posts' => Post::with(['author', 'category', ])->latest()->get(), //agar tidak terjadi N+1 Problem untuk bukan route model binding (manual Post::), tambah load()
+      'title' => 'All Posts' . $title,
+      'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString(),
     ]);
   }
 

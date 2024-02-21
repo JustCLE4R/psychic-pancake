@@ -41,7 +41,7 @@ Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']); //kalo ditambah ":" setelah wildcard dia akan mengirimkan sesuai dengan apa yang kita ketik (default jika tidak di ketik adalah ID)
 
 Route::get('/categories', [CategoryController::class, 'index']);
-Route::get('/categories/{category:slug}', [CategoryController::class, 'cat']);
+// Route::get('/categories/{category:slug}', [CategoryController::class, 'cat']); //udah ga kepake
 
-Route::get('/authors/{author:username}', [UserController::class, 'user']);
+// Route::get('/authors/{author:username}', [UserController::class, 'user']); //udah ga kepake
 Route::get('/authors', [UserController::class, 'users']);
