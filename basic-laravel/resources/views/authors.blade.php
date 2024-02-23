@@ -2,14 +2,22 @@
 
 @section('container')
   <h1 class="mb-5">Halaman Kategori</h1>
-  <ul>
-    @foreach ($authors as $author)
-      <li class="mb-2">
-        <h2 class="mb-0">
-          <a href="/authors/{{ $author->username }}">{{ $author->name }}</a>
-        </h2>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ $author->email }}" class="text-decoration-none" target="_blank">{{ $author->email }}</a>
-      </li>
-    @endforeach
-  </ul>
+
+  <div class="container">
+    <div class="row">
+      @foreach ($authors as $author)
+        <div class="col-md-4 mb-4">
+          <a href="/posts?author={{ $author->username }}">
+            <div class="card text-bg-dark">
+              <img src="https://source.unsplash.com/500x400?user={{ $author->username }}" class="card-img" alt="{{ $author->name }}">
+              <div class="card-img-overlay d-flex align-items-center p-0">
+                <h5 class="card-title text-center flex-fill p-3 fs-3" style="background-color: rgba(0, 0, 0, 0.6)">{{ $author ->name }}</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+      @endforeach
+    </div>
+  </div>
+
 @endsection
