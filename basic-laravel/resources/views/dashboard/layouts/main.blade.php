@@ -38,8 +38,14 @@
   </div>
 </div>
 
+    {{-- JQuery --}}
+    <script src="\jquery-3.7.1\jquery.min.js"></script>
+
     {{-- Bootstrap JS --}}
     <script src="\bootstrap-5.3.2\js\bootstrap.bundle.min.js"></script>
+
+    {{-- Sweetalert2 --}}
+    <script src="/sweetalert2/sweetalert2.all.min.js"></script>
 
     {{-- Trix --}}
     <script src="/js/trix.js"></script>
