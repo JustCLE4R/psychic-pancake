@@ -13,9 +13,11 @@
         @method('DELETE')
         <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i> Delete</button>
       </form>
-    
-      <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="img-fluid mt-3" alt="{{ $post->category->name }}">
-
+      @if ($post->image)
+        <img src="{{ asset('storage/'.$post->image) }}" class="img-fluid mt-3 d-block" alt="{{ $post->category->name }}" style="max-height: 400px">
+      @else
+        <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="img-fluid mt-3" alt="{{ $post->category->name }}">
+      @endif
       <article class="my-3 fs-5">
         {!! $post->body !!}
       </article>

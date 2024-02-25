@@ -6,7 +6,7 @@
 </div>
 
 <div class="col-lg-9">
-  <form class="mb-5" action="/dashboard/posts/{{ $post->slug }}" method="post">
+  <form class="mb-5" action="/dashboard/posts/{{ $post->slug }}" method="post" enctype="multipart/form-data">
     @method('PATCH')
     @csrf
     <div class="mb-3">
@@ -40,6 +40,22 @@
       </select>
     </div>
     <div class="mb-3">
+      <label for="image" class="form-label">Post Image</label>
+      <input type="hidden" name="oldImage" value="{{ $post->image }}">
+      @if ($post->image)
+        <img src="{{ asset('storage/'.$post->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+      @else
+        <img class="img-preview img-fluid mb-3 col-sm-5">
+      @endif
+
+      <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+      @error('image')
+        <div class="invalid-feedback">
+          {{ $message }}
+        </div>
+      @enderror
+    </div>
+    <div class="mb-3">
       <label for="body" class="form-label">Body</label>
       @error('body')
         <p class="text-danger" style="font-size: .9rem">{{ $message }}</p>
@@ -65,15 +81,19 @@
     }).done((data) => {
       slug.val(data.slug);
     })
-    })
-
-  // title.on('input', function(){
-  //   slug.val(title.val().replace(/ /g, '-').toLowerCase());
-  // })
+  })
 
   $(document).on('trix-file-accept', (e) => {
     e.preventDefault();
   })
+
+  function previewImage() {
+    const imgPreview = $('.img-preview');
+    imgPreview.css('display', 'block');
+
+    const blob = URL.createObjectURL($('#image')[0].files[0]);
+    imgPreview.attr('src', blob);
+  }
 </script>
 
 @endsection

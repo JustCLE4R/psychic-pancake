@@ -22,19 +22,20 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         
-        // function createUser($name, $email, $password){
-        //     User::create([
-        //         'name' => $name,
-        //         'email' => $email,
-        //         'password' => bcrypt($password),
-        //     ]);
-        // }
+        function createUser($name, $username, $email, $password){
+            User::create([
+                'name' => $name,
+                'username' => $username,
+                'email' => $email,
+                'password' => bcrypt($password),
+            ]);
+        }
         
-        // createUser('Dimas Yudistira', 'dimas@example.com', 'password');
+        createUser('Dimas Yudistira', 'CLE4R', 'dimas@gmail.com', 'password');
         // createUser('Ira Rivera', 'Ira@gmail.com', 'password');
         // createUser('Rara Pajiron', 'rara@gmail.com', 'password');
 
-        User::factory(5)->create();
+        User::factory(4)->create();
 
         function createCategory($name, $slug){
             Category::create([
